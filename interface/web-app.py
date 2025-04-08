@@ -14,7 +14,7 @@ import urllib.request
 @st.cache_resource
 def load_data():
     url = "https://raw.githubusercontent.com/Morgan11-tech/Machine-Learning-for-Precision-Medicine-in-Ghana/main/interface/drug_embedding.pt"
-    local_path = "/Users/sarpongmorgan/Downloads/Capstone stuff/CapstoneProject/tests/drug-disease-association-application/drug_embedding.pt"
+    local_path = "drug_embedding.pt"
     urllib.request.urlretrieve(url, local_path)
     drug_embedding = torch.load(local_path, weights_only=True)
 
