@@ -18,27 +18,27 @@ def load_data():
     urllib.request.urlretrieve(url, local_path)
     drug_embedding = torch.load(local_path, weights_only=True)
 
-    disease_embedding = torch.load("/Users/sarpongmorgan/Downloads/Capstone stuff/CapstoneProject/tests/drug-disease-association-application/disease_embedding.pt")
+    disease_embedding = torch.load("disease_embedding.pt")
     
-    with open("/Users/sarpongmorgan/Downloads/Capstone stuff/CapstoneProject/tests/drug-disease-association-application/drug_nodes.pkl", "rb") as f:
+    with open("drug_nodes.pkl", "rb") as f:
         drug_nodes = pickle.load(f)
     
-    with open("/Users/sarpongmorgan/Downloads/Capstone stuff/CapstoneProject/tests/drug-disease-association-application/disease_nodes.pkl", "rb") as f:
+    with open("disease_nodes.pkl", "rb") as f:
         disease_nodes = pickle.load(f)
     
-    with open("/Users/sarpongmorgan/Downloads/Capstone stuff/CapstoneProject/tests/drug-disease-association-application/drug_embeddings.pkl", "rb") as f:
+    with open("drug_embeddings.pkl", "rb") as f:
         drug_embeddings = pickle.load(f)
 
-    with open("/Users/sarpongmorgan/Downloads/Capstone stuff/CapstoneProject/tests/drug-disease-association-application/disease_embeddings.pkl", "rb") as f:
+    with open("disease_embeddings.pkl", "rb") as f:
         disease_embeddings = pickle.load(f)
 
-    with open("/Users/sarpongmorgan/Downloads/Capstone stuff/CapstoneProject/tests/drug-disease-association-application/gene_embeddings.pkl", "rb") as f:
+    with open("gene_embeddings.pkl", "rb") as f:
         gene_embeddings = pickle.load(f)
 
-    with open("/Users/sarpongmorgan/Downloads/Capstone stuff/CapstoneProject/tests/drug-disease-association-application/triples_df.pkl", "rb") as f:
+    with open("triples_df.pkl", "rb") as f:
         triples_df = pickle.load(f)
         
-    drug_disease_df = pd.read_csv("/Users/sarpongmorgan/Downloads/Capstone stuff/CapstoneProject/tests/drug-disease-association-application/drug_disease_df.csv")
+    drug_disease_df = pd.read_csv("drug_disease_df.csv")
     
 
     return drug_embedding, disease_embedding, drug_nodes, disease_nodes, drug_disease_df, drug_embeddings, disease_embeddings, gene_embeddings, triples_df
