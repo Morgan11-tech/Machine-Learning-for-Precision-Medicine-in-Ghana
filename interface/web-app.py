@@ -18,8 +18,11 @@ def load_data():
     urllib.request.urlretrieve(url, local_path)
     drug_embedding = torch.load(local_path, weights_only=True)
 
-    disease_embedding = torch.load("disease_embedding.pt")
-    
+    url_disease = "https://raw.githubusercontent.com/Morgan11-tech/Machine-Learning-for-Precision-Medicine-in-Ghana/main/interface/disease_embedding.pt"
+    local_path_disease = "disease_embedding.pt"
+    urllib.request.urlretrieve(url_disease, local_path_disease)
+    disease_embedding = torch.load(local_path_disease, weights_only=True)
+
     with open("drug_nodes.pkl", "rb") as f:
         drug_nodes = pickle.load(f)
     
