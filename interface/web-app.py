@@ -23,25 +23,49 @@ def load_data():
     urllib.request.urlretrieve(url_disease, local_path_disease)
     disease_embedding = torch.load(local_path_disease, weights_only=True)
 
-    with open("drug_nodes.pkl", "rb") as f:
+    # Load the other data files
+    url_drug_nodes = "https://raw.githubusercontent.com/Morgan11-tech/Machine-Learning-for-Precision-Medicine-in-Ghana/main/interface/drug_nodes.pkl"
+    local_path_drug_nodes = "drug_nodes.pkl"
+    urllib.request.urlretrieve(url_drug_nodes, local_path_drug_nodes)
+    with open(local_path_drug_nodes, "rb") as f:
         drug_nodes = pickle.load(f)
     
-    with open("disease_nodes.pkl", "rb") as f:
+    url_disease_nodes = "https://raw.githubusercontent.com/Morgan11-tech/Machine-Learning-for-Precision-Medicine-in-Ghana/main/interface/disease_nodes.pkl"
+    local_path_disease_nodes = "disease_nodes.pkl"
+    urllib.request.urlretrieve(url_disease_nodes, local_path_disease_nodes)
+    with open(local_path_disease_nodes, "rb") as f:
         disease_nodes = pickle.load(f)
-    
-    with open("drug_embeddings.pkl", "rb") as f:
+
+    url_drug_embeddings = "https://raw.githubusercontent.com/Morgan11-tech/Machine-Learning-for-Precision-Medicine-in-Ghana/main/interface/drug_embeddings.pkl"
+    local_path_drug_embeddings = "drug_embeddings.pkl"
+    urllib.request.urlretrieve(url_drug_embeddings, local_path_drug_embeddings)
+    with open(local_path_drug_embeddings, "rb") as f:
         drug_embeddings = pickle.load(f)
 
-    with open("disease_embeddings.pkl", "rb") as f:
+    url_disease_embeddings = "https://raw.githubusercontent.com/Morgan11-tech/Machine-Learning-for-Precision-Medicine-in-Ghana/main/interface/disease_embeddings.pkl"
+    local_path_disease_embeddings = "disease_embeddings.pkl"
+    urllib.request.urlretrieve(url_disease_embeddings, local_path_disease_embeddings)
+    with open(local_path_disease_embeddings, "rb") as f:
         disease_embeddings = pickle.load(f)
 
-    with open("gene_embeddings.pkl", "rb") as f:
+    url_gene_embeddings = "https://raw.githubusercontent.com/Morgan11-tech/Machine-Learning-for-Precision-Medicine-in-Ghana/main/interface/gene_embeddings.pkl"
+    local_path_gene_embeddings = "gene_embeddings.pkl"
+    urllib.request.urlretrieve(url_gene_embeddings, local_path_gene_embeddings)
+    with open(local_path_gene_embeddings, "rb") as f:
         gene_embeddings = pickle.load(f)
 
-    with open("triples_df.pkl", "rb") as f:
+    url_triples_df = "https://raw.githubusercontent.com/Morgan11-tech/Machine-Learning-for-Precision-Medicine-in-Ghana/main/interface/triples_df.pkl"
+    local_path_triples_df = "triples_df.pkl"
+    urllib.request.urlretrieve(url_triples_df, local_path_triples_df)
+    with open(local_path_triples_df, "rb") as f:
         triples_df = pickle.load(f)
-        
-    drug_disease_df = pd.read_csv("drug_disease_df.csv")
+
+    url_drug_disease_df = "https://raw.githubusercontent.com/Morgan11-tech/Machine-Learning-for-Precision-Medicine-in-Ghana/main/interface/drug_disease_df.csv"
+    local_path_drug_disease_df = "drug_disease_df.csv"
+    urllib.request.urlretrieve(url_drug_disease_df, local_path_drug_disease_df)
+    
+    drug_disease_df = pd.read_csv(local_path_drug_disease_df)
+    
     
 
     return drug_embedding, disease_embedding, drug_nodes, disease_nodes, drug_disease_df, drug_embeddings, disease_embeddings, gene_embeddings, triples_df
