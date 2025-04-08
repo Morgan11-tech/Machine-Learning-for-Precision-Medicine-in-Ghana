@@ -8,11 +8,16 @@ from reportlab.lib.pagesizes import letter
 from reportlab.lib import colors
 from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Table, TableStyle
+import urllib.request
 
 # Load the saved data
 @st.cache_resource
 def load_data():
-    drug_embedding = torch.load("https://raw.githubusercontent.com/Morgan11-tech/Machine-Learning-for-Precision-Medicine-in-Ghana/main/interface/drug_embedding.pt")
+    url = "https://raw.githubusercontent.com/Morgan11-tech/Machine-Learning-for-Precision-Medicine-in-Ghana/main/interface/drug_embedding.pt"
+    local_path = "/Users/sarpongmorgan/Downloads/Capstone stuff/CapstoneProject/tests/drug-disease-association-application/drug_embedding.pt"
+    urllib.request.urlretrieve(url, local_path)
+    drug_embedding = torch.load(local_path, weights_only=True)
+
     disease_embedding = torch.load("/Users/sarpongmorgan/Downloads/Capstone stuff/CapstoneProject/tests/drug-disease-association-application/disease_embedding.pt")
     
     with open("/Users/sarpongmorgan/Downloads/Capstone stuff/CapstoneProject/tests/drug-disease-association-application/drug_nodes.pkl", "rb") as f:
