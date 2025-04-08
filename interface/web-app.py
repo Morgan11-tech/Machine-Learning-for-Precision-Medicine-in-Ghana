@@ -220,10 +220,10 @@ def predict_for_drug(drug_name, drug_embeddings, disease_embeddings, gene_embedd
 def prepare_prediction_data():
     drugs, diseases, genes = separate_entities(triples_df)
     genes_of_interest = {'DPYD', 'UGT1A1', 'PIK3CA', 'NRAS', 'KRAS', 'BRAF'}
+    
     drug_gene_associations, disease_gene_associations = build_known_associations(triples_df, genes_of_interest)
+    
     return drugs, diseases, genes, genes_of_interest, drug_gene_associations, disease_gene_associations
-
-drugs, diseases, genes, genes_of_interest, drug_gene_associations, disease_gene_associations = prepare_prediction_data()
 
 
 # Generate PDF report for drug-disease-gene prediction
